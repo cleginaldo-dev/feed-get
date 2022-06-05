@@ -5,7 +5,12 @@ import { TouchableOpacity } from "react-native";
 import { gestureHandlerRootHOC } from "react-native-gesture-handler";
 
 import { theme } from "../../theme";
+import { feedbackTypes } from "../../utils/feedbackTypes";
+import { Form } from "../Form";
+import { Options } from "../Options";
 import { styles } from "./styles";
+
+export type FeedbackType = keyof typeof feedbackTypes;
 
 function Widget() {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -24,12 +29,14 @@ function Widget() {
         />
       </TouchableOpacity>
       <BottomSheet
-        children
         snapPoints={[1, 280]}
         ref={bottomSheetRef}
         backgroundStyle={styles.modal}
         handleIndicatorStyle={styles.indicator}
-      />
+      >
+        {/* <Options /> */}
+        <Form feedbackType="BUG" />
+      </BottomSheet>
     </>
   );
 }
