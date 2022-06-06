@@ -8,7 +8,6 @@ const router = Router();
 
 router.post("/feedbacks", async (req, res) => {
   const { type, comment, screenshot } = req.body;
-  console.log(screenshot);
   const prismaFeedbacksRepository = new FeedbacksRepository();
   const nodeMailerProvider = new NodeMailProvider();
   const submitFeedbackUseCase = new SubmitFeedbackUseCase(
